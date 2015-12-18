@@ -1,0 +1,166 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:cache="http://www.springframework.org/schema/cache"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:hz="http://www.hazelcast.com/schema/spring" xmlns:ucache="http://www.ucache.framework/ucache/schema/ucache"
+	xmlns:c="http://www.springframework.org/schema/c"
+	xmlns:mongo="http://www.springframework.org/schema/data/mongo"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+   http://www.springframework.org/schema/beans/spring-beans.xsd 
+     http://www.springframework.org/schema/cache 
+     http://www.springframework.org/schema/cache/spring-cache.xsd
+     http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+      http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd
+      http://www.hazelcast.com/schema/spring      http://www.hazelcast.com/schema/spring/hazelcast-spring.xsd
+      http://www.ucache.framework/ucache/schema/ucache      http://www.ucache.framework/ucache/schema/ucache.xsd
+      http://www.springframework.org/schema/data/mongo http://www.springframework.org/schema/data/mongo/spring-mongo.xsd
+     ">
+	<!-- <aop:aspectj-autoproxy proxy-target-class="true"/> -->
+	<!-- <context:annotation-config /> <aop:aspectj-autoproxy/> -->
+	<context:component-scan base-package="com.stnts.cache" />
+	<cache:annotation-driven cache-manager="compositeManager" />
+
+	<!-- generic cache manager -->
+	<bean id="cacheManager" class="org.springframework.cache.support.SimpleCacheManager">
+		<property name="caches">
+			<set>
+				<bean
+					class="org.springframework.cache.concurrent.ConcurrentMapCacheFactoryBean"
+					p:name="default" />
+
+				<bean
+					class="org.springframework.cache.concurrent.ConcurrentMapCacheFactoryBean"
+					p:name="accountCache" />
+			</set>
+		</property>
+	</bean>
+
+	<!-- ehcache -->
+	<bean id="cacheManagerEH" class="org.springframework.cache.ehcache.EhCacheCacheManager"
+		p:cache-manager-ref="ehcache" />
+
+	<!-- EhCache library setup -->
+	<bean id="ehcache"
+		class="org.springframework.cache.ehcache.EhCacheManagerFactoryBean"
+		p:config-location="ehcache.xml" />
+	<bean id="ehCache" class="org.springframework.cache.ehcache.EhCacheFactoryBean">
+		<property name="cacheManager">
+			<ref bean="ehcache" />
+		</property>
+		<property name="cacheName">
+			<value>testCache</value>
+		</property>
+	</bean>
+	<!--powfull cache -->
+	<hz:hazelcast id="instanceCache" lazy-init="true">
+		<hz:config>
+			<hz:network port="5701">
+				<hz:join>
+					<hz:multicast enabled="true" />
+				</hz:join>
+			</hz:network>
+			<hz:map name="mapCache" max-size="1000">
+				<hz:near-cache time-to-live-seconds="0"
+					max-idle-seconds="60" eviction-policy="LRU" max-size="5000"
+					invalidate-on-change="true" />
+			</hz:map>
+			
+			<hz:map name="persistentmaps.*" backup-count="1"
+			time-to-live-seconds="0" max-idle-seconds="0" eviction-policy="NONE"
+			eviction-percentage="25" merge-policy="hz.ADD_NEW_ENTRY"
+			>
+				<hz:map-store enabled="true" class-name="idgenerator.FileSystemMapStoreFactory" write-delay-seconds="1">
+				
+				</hz:map-store>
+			</hz:map>
+			
+			<!-- <map name="persistentmaps.*">
+    <backup-count>1</backup-count>
+    <time-to-live-seconds>0</time-to-live-seconds>
+    <max-idle-seconds>0</max-idle-seconds>
+    <eviction-policy>NONE</eviction-policy>
+    <max-size policy="cluster_wide_map_size">0</max-size>
+    <eviction-percentage>25</eviction-percentage>
+    <merge-policy>hz.ADD_NEW_ENTRY</merge-policy>
+    <map-store enabled="true">
+        <factory-class-name>com.mypackage.FileSystemMapStoreFactory</factory-class-name>
+        <write-delay-seconds>1</write-delay-seconds>
+    </map-store>
+</map> -->
+		</hz:config>
+	</hz:hazelcast>
+	<bean id="hcCacheManager" class="com.hazelcast.spring.cache.HazelcastCacheManager"
+		depends-on="instanceCache" lazy-init="true">
+		<constructor-arg ref="instanceCache" />
+	</bean>
+
+	
+	<!-- composite cache -->
+	<bean id="compositeManager" class="org.springframework.cache.support.CompositeCacheManager">
+		<property name="cacheManagers">
+			<list>
+				<!-- <ref bean="cacheManager" />
+				<ref bean="cacheManagerEH" />
+				<ref bean="cacheManagerRedis" /> -->
+				<ref bean="hcCacheManager" />
+			</list>
+		</property>
+		<property name="fallbackToNoOpCache" value="true" />
+	</bean>
+
+	<!-- redis cache -->
+	<!-- declare Redis Cache Manager -->
+	<bean id="cacheManagerRedis" class="test.stnts.cache.jedis.RedisCacheManager">
+		<constructor-arg index="0" ref="redisshared"></constructor-arg>
+		<constructor-arg index="1">
+			<set>
+				<value>redisCache</value>
+			</set>
+		</constructor-arg>
+	</bean>
+
+	<!-- redis shared -->
+
+	<!-- test ucache -->
+	<ucache:people id="people" name="袁志俊" age="27" />
+
+	<ucache:redisshared id="redisshared">
+		<ucache:sharding-strategy
+			shared-strategy-impl="test.stnts.cache.redis.URedisShardingStrategy" />
+		<ucache:connection-factory-provider
+			name="connectionProvider">
+			<ucache:spec-provider>
+				<ucache:shared-spec id="sharedSpec0" host="192.168.4.57"
+					password="eyoo_abc_kkmb-abc" port="6379" db="0" />
+				<ucache:shared-spec id="sharedSpec1" host="192.168.2.97"
+					password="eyoo_abc_kkmb-abc" port="6379" db="1" />
+				<ucache:shared-spec id="sharedSpec2" host="192.168.4.57"
+					password="eyoo_abc_kkmb-abc" port="6379" db="2" />
+				<ucache:shared-spec id="sharedSpec3" host="192.168.2.97"
+					password="eyoo_abc_kkmb-abc" port="6379" db="3" />
+			</ucache:spec-provider>
+		</ucache:connection-factory-provider>
+	</ucache:redisshared>
+	<!-- <bean id="annotationSource" class="org.springframework.cache.annotation.AnnotationCacheOperationSource" 
+		/> <bean id="debugInterceptor" class="org.springframework.aop.interceptor.DebugInterceptor" 
+		/> -->
+
+	<!-- mongodb config -->
+	<mongo:mapping-converter/>
+	<!-- Mongo config -->
+	<bean id="mongo" class="org.springframework.data.mongodb.core.MongoFactoryBean">
+		<property name="host" value="localhost" />
+		<property name="port" value="27017" />
+	</bean>
+	<bean id="mongoDbFactory"
+		class="org.springframework.data.mongodb.core.SimpleMongoDbFactory">
+		<constructor-arg name="mongo" ref="mongo" />
+		<constructor-arg name="databaseName" value="database" />
+	</bean>
+
+	<bean id="mongoTemplate" class="org.springframework.data.mongodb.core.MongoTemplate">
+		<constructor-arg name="mongoDbFactory" ref="mongoDbFactory" />
+		<constructor-arg name="mongoConverter" ref="mappingConverter" />
+	</bean>
+
+</beans>

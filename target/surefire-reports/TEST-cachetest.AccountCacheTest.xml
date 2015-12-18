@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuite failures="0" time="11.441" errors="1" skipped="0" tests="1" name="cachetest.AccountCacheTest">
+  <properties>
+    <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
+    <property name="sun.boot.library.path" value="D:\Program Files\Java\jdk1.7.0_71\jre\bin"/>
+    <property name="java.vm.version" value="24.71-b01"/>
+    <property name="java.vm.vendor" value="Oracle Corporation"/>
+    <property name="java.vendor.url" value="http://java.oracle.com/"/>
+    <property name="path.separator" value=";"/>
+    <property name="guice.disable.misplaced.annotation.check" value="true"/>
+    <property name="java.vm.name" value="Java HotSpot(TM) 64-Bit Server VM"/>
+    <property name="file.encoding.pkg" value="sun.io"/>
+    <property name="user.script" value=""/>
+    <property name="user.country" value="CN"/>
+    <property name="sun.java.launcher" value="SUN_STANDARD"/>
+    <property name="sun.os.patch.level" value="Service Pack 1"/>
+    <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
+    <property name="user.dir" value="E:\working\cachetest"/>
+    <property name="java.runtime.version" value="1.7.0_71-b14"/>
+    <property name="java.awt.graphicsenv" value="sun.awt.Win32GraphicsEnvironment"/>
+    <property name="java.endorsed.dirs" value="D:\Program Files\Java\jdk1.7.0_71\jre\lib\endorsed"/>
+    <property name="os.arch" value="amd64"/>
+    <property name="java.io.tmpdir" value="C:\Users\ADMINI~1\AppData\Local\Temp\"/>
+    <property name="line.separator" value="
+"/>
+    <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
+    <property name="user.variant" value=""/>
+    <property name="os.name" value="Windows 7"/>
+    <property name="classworlds.conf" value="E:\working\.metadata\.plugins\org.eclipse.m2e.launching\launches\m2conf7599706487938748981.tmp"/>
+    <property name="sun.jnu.encoding" value="GBK"/>
+    <property name="java.library.path" value="D:\Program Files\Java\jdk1.7.0_71\bin;C:\Windows\Sun\Java\bin;C:\Windows\system32;C:\Windows;D:/Program Files/Java/jdk1.7.0_71/bin/../jre/bin/server;D:/Program Files/Java/jdk1.7.0_71/bin/../jre/bin;D:/Program Files/Java/jdk1.7.0_71/bin/../jre/lib/amd64;;E:\apache-maven-3.0.5\bin;E:\server\IEDriverServer.exe;E:\server\chromedriver.exe;D:\Program Files (x86)\Embarcadero\RAD Studio\10.0\bin;C:\Users\Public\Documents\RAD Studio\10.0\Bpl;D:\Program Files (x86)\Embarcadero\RAD Studio\10.0\bin64;C:\Users\Public\Documents\RAD Studio\10.0\Bpl\Win64;E:\gradle-1.11\bin;E:\apache-ant-1.9.2-bin\apache-ant-1.9.2\bin;E:\apache-maven-3.0.5\bin;D:\Program Files\Java\jdk1.7.0_71\bin;%C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files (x86)\Intel\iCLS Client\;C:\Program Files\Intel\iCLS Client\;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Program Files\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files\VanDyke Software\Clients\;C:\Program Files\TortoiseSVN\bin;D:\wamp\bin\php\php5.4.12;C:\ProgramData\ComposerSetup\bin;d:\Program Files (x86)\Tesseract-OCR;d:\Program Files (x86)\SSH Communications Security\SSH Secure Shell;D:\eclipse;;."/>
+    <property name="java.specification.name" value="Java Platform API Specification"/>
+    <property name="java.class.version" value="51.0"/>
+    <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
+    <property name="os.version" value="6.1"/>
+    <property name="user.home" value="C:\Users\Administrator"/>
+    <property name="user.timezone" value="Asia/Shanghai"/>
+    <property name="java.awt.printerjob" value="sun.awt.windows.WPrinterJob"/>
+    <property name="java.specification.version" value="1.7"/>
+    <property name="file.encoding" value="UTF-8"/>
+    <property name="user.name" value="Administrator"/>
+    <property name="java.class.path" value="E:\apache-maven-3.0.5\boot\plexus-classworlds-2.4.jar"/>
+    <property name="java.vm.specification.version" value="1.7"/>
+    <property name="sun.arch.data.model" value="64"/>
+    <property name="java.home" value="D:\Program Files\Java\jdk1.7.0_71\jre"/>
+    <property name="sun.java.command" value="org.codehaus.plexus.classworlds.launcher.Launcher -B -s E:\apache-maven-3.0.5\conf\settings.xml install"/>
+    <property name="java.specification.vendor" value="Oracle Corporation"/>
+    <property name="user.language" value="zh"/>
+    <property name="awt.toolkit" value="sun.awt.windows.WToolkit"/>
+    <property name="java.vm.info" value="mixed mode"/>
+    <property name="java.version" value="1.7.0_71"/>
+    <property name="java.ext.dirs" value="D:\Program Files\Java\jdk1.7.0_71\jre\lib\ext;C:\Windows\Sun\Java\lib\ext"/>
+    <property name="sun.boot.class.path" value="D:\Program Files\Java\jdk1.7.0_71\jre\lib\resources.jar;D:\Program Files\Java\jdk1.7.0_71\jre\lib\rt.jar;D:\Program Files\Java\jdk1.7.0_71\jre\lib\sunrsasign.jar;D:\Program Files\Java\jdk1.7.0_71\jre\lib\jsse.jar;D:\Program Files\Java\jdk1.7.0_71\jre\lib\jce.jar;D:\Program Files\Java\jdk1.7.0_71\jre\lib\charsets.jar;D:\Program Files\Java\jdk1.7.0_71\jre\lib\jfr.jar;D:\Program Files\Java\jdk1.7.0_71\jre\classes"/>
+    <property name="java.vendor" value="Oracle Corporation"/>
+    <property name="maven.home" value="E:\apache-maven-3.0.5"/>
+    <property name="file.separator" value="\"/>
+    <property name="java.vendor.url.bug" value="http://bugreport.sun.com/bugreport/"/>
+    <property name="sun.cpu.endian" value="little"/>
+    <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
+    <property name="sun.desktop" value="windows"/>
+    <property name="sun.cpu.isalist" value="amd64"/>
+  </properties>
+  <testcase time="0.062" classname="cachetest.AccountCacheTest" name="testCacheDb">
+    <error message="There is no suitable serializer for class com.stnts.cache.po.Account" type="com.hazelcast.nio.serialization.HazelcastSerializationException">com.hazelcast.nio.serialization.HazelcastSerializationException: There is no suitable serializer for class com.stnts.cache.po.Account
+	at com.hazelcast.nio.serialization.SerializationServiceImpl.serializerFor(SerializationServiceImpl.java:469)
+	at com.hazelcast.nio.serialization.SerializationServiceImpl.toData(SerializationServiceImpl.java:220)
+	at com.hazelcast.nio.serialization.SerializationServiceImpl.toData(SerializationServiceImpl.java:207)
+	at com.hazelcast.map.impl.MapServiceContextImpl.toData(MapServiceContextImpl.java:307)
+	at com.hazelcast.map.impl.proxy.MapProxySupport.toData(MapProxySupport.java:1118)
+	at com.hazelcast.map.impl.proxy.MapProxyImpl.set(MapProxyImpl.java:170)
+	at com.hazelcast.map.impl.proxy.MapProxyImpl.set(MapProxyImpl.java:161)
+	at com.hazelcast.spring.cache.HazelcastCache.put(HazelcastCache.java:67)
+	at org.springframework.cache.interceptor.AbstractCacheInvoker.doPut(AbstractCacheInvoker.java:82)
+	at org.springframework.cache.interceptor.CacheAspectSupport$CachePutRequest.apply(CacheAspectSupport.java:651)
+	at org.springframework.cache.interceptor.CacheAspectSupport.execute(CacheAspectSupport.java:358)
+	at org.springframework.cache.interceptor.CacheAspectSupport.execute(CacheAspectSupport.java:299)
+	at org.springframework.cache.interceptor.CacheInterceptor.invoke(CacheInterceptor.java:61)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:179)
+	at org.springframework.aop.framework.JdkDynamicAopProxy.invoke(JdkDynamicAopProxy.java:207)
+	at com.sun.proxy.$Proxy16.getAccountByName2(Unknown Source)
+	at cachetest.AccountCacheTest.testCacheDb(AccountCacheTest.java:33)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:606)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:45)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:15)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:42)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:20)
+	at org.springframework.test.context.junit4.statements.RunBeforeTestMethodCallbacks.evaluate(RunBeforeTestMethodCallbacks.java:73)
+	at org.springframework.test.context.junit4.statements.RunAfterTestMethodCallbacks.evaluate(RunAfterTestMethodCallbacks.java:82)
+	at org.springframework.test.context.junit4.statements.SpringRepeat.evaluate(SpringRepeat.java:73)
+	at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:263)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.runChild(SpringJUnit4ClassRunner.java:224)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.runChild(SpringJUnit4ClassRunner.java:83)
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:231)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:60)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:229)
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:50)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:222)
+	at org.springframework.test.context.junit4.statements.RunBeforeTestClassCallbacks.evaluate(RunBeforeTestClassCallbacks.java:61)
+	at org.springframework.test.context.junit4.statements.RunAfterTestClassCallbacks.evaluate(RunAfterTestClassCallbacks.java:68)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:300)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.run(SpringJUnit4ClassRunner.java:163)
+	at org.apache.maven.surefire.junit4.JUnit4TestSet.execute(JUnit4TestSet.java:53)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.executeTestSet(JUnit4Provider.java:123)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.invoke(JUnit4Provider.java:104)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:606)
+	at org.apache.maven.surefire.util.ReflectionUtils.invokeMethodWithArray(ReflectionUtils.java:164)
+	at org.apache.maven.surefire.booter.ProviderFactory$ProviderProxy.invoke(ProviderFactory.java:110)
+	at org.apache.maven.surefire.booter.SurefireStarter.invokeProvider(SurefireStarter.java:175)
+	at org.apache.maven.surefire.booter.SurefireStarter.runSuitesInProcessWhenForked(SurefireStarter.java:107)
+	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:68)
+</error>
+    <system-out>test.stnts.cache.redis.URedisShardingStrategy@7a663ebc[
+  NUM_SHARDS=4
+]
+17:44:59 [main] AccountCacheTest - db first query...
+17:44:59 [main] AccountService - real query account.somebody
+17:44:59 [main] AccountService - real querying db...somebody
+</system-out>
+    <system-err>SLF4J: Failed to load class &quot;org.slf4j.impl.StaticLoggerBinder&quot;.
+SLF4J: Defaulting to no-operation (NOP) logger implementation
+SLF4J: See http://www.slf4j.org/codes.html#StaticLoggerBinder for further details.
+ʮ�� 29, 2015 5:44:49 ���� com.hazelcast.instance.DefaultAddressPicker
+��Ϣ: [LOCAL] [dev] [3.5] Prefer IPv4 stack is true.
+ʮ�� 29, 2015 5:44:49 ���� com.hazelcast.instance.DefaultAddressPicker
+��Ϣ: [LOCAL] [dev] [3.5] Picked Address[192.168.35.166]:5701, using socket ServerSocket[addr=/0:0:0:0:0:0:0:0,localport=5701], bind any local is true
+ʮ�� 29, 2015 5:44:49 ���� com.hazelcast.spi.OperationService
+��Ϣ: [192.168.35.166]:5701 [dev] [3.5] Backpressure is disabled
+ʮ�� 29, 2015 5:44:49 ���� com.hazelcast.spi.impl.operationexecutor.classic.ClassicOperationExecutor
+��Ϣ: [192.168.35.166]:5701 [dev] [3.5] Starting with 2 generic operation threads and 4 partition operation threads.
+ʮ�� 29, 2015 5:44:50 ���� com.hazelcast.system
+��Ϣ: [192.168.35.166]:5701 [dev] [3.5] Hazelcast 3.5 (20150617 - 4270dc6) starting at Address[192.168.35.166]:5701
+ʮ�� 29, 2015 5:44:50 ���� com.hazelcast.system
+��Ϣ: [192.168.35.166]:5701 [dev] [3.5] Copyright (c) 2008-2015, Hazelcast, Inc. All Rights Reserved.
+ʮ�� 29, 2015 5:44:50 ���� com.hazelcast.instance.Node
+��Ϣ: [192.168.35.166]:5701 [dev] [3.5] Creating MulticastJoiner
+ʮ�� 29, 2015 5:44:50 ���� com.hazelcast.core.LifecycleService
+��Ϣ: [192.168.35.166]:5701 [dev] [3.5] Address[192.168.35.166]:5701 is STARTING
+ʮ�� 29, 2015 5:44:59 ���� com.hazelcast.cluster.impl.MulticastJoiner
+��Ϣ: [192.168.35.166]:5701 [dev] [3.5] 
+
+
+Members [1] {
+	Member [192.168.35.166]:5701 this
+}
+
+ʮ�� 29, 2015 5:44:59 ���� com.hazelcast.core.LifecycleService
+��Ϣ: [192.168.35.166]:5701 [dev] [3.5] Address[192.168.35.166]:5701 is STARTED
+ʮ�� 29, 2015 5:44:59 ���� com.hazelcast.internal.monitors.HealthMonitor
+��Ϣ: [192.168.35.166]:5701 [dev] [3.5] processors=4, physical.memory.total=8.0G, physical.memory.free=1.7G, swap.space.total=15.9G, swap.space.free=6.7G, heap.memory.used=55.0M, heap.memory.free=99.5M, heap.memory.total=154.5M, heap.memory.max=1.8G, heap.memory.used/total=35.62%, heap.memory.used/max=3.04%, minor.gc.count=4, minor.gc.time=23ms, major.gc.count=0, major.gc.time=0ms, load.process=-100.00%, load.system=76.00%, load.systemAverage=n/a, thread.count=38, thread.peakCount=39, cluster.timeDiff=0, event.q.size=0, executor.q.async.size=0, executor.q.client.size=0, executor.q.query.size=0, executor.q.scheduled.size=0, executor.q.io.size=0, executor.q.system.size=0, executor.q.operation.size=0, executor.q.priorityOperation.size=0, executor.q.response.size=0, operations.remote.size=0, operations.running.size=0, operations.pending.invocations.count=0, operations.pending.invocations.percentage=0.00%, proxy.count=0, clientEndpoint.count=0, connection.active.count=0, client.connection.count=0, connection.count=0
+ʮ�� 29, 2015 5:44:59 ���� com.hazelcast.partition.InternalPartitionService
+��Ϣ: [192.168.35.166]:5701 [dev] [3.5] Initializing cluster partition table first arrangement...
+</system-err>
+  </testcase>
+</testsuite>

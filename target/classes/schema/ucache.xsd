@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns="http://www.ucache.framework/ucache/schema/ucache"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:beans="http://www.springframework.org/schema/beans"
+	targetNamespace="http://www.ucache.framework/ucache/schema/ucache"
+	elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xsd:import namespace="http://www.springframework.org/schema/beans" />
+	<xsd:element name="redisshared">
+		<xsd:complexType>
+			<xsd:complexContent>
+				<xsd:extension base="beans:identifiedType">
+					<xsd:sequence>
+						<xsd:element name="sharding-strategy" type="sharding-strategy"
+							minOccurs="1" maxOccurs="1" />
+						<xsd:element name="connection-factory-provider" type="connection-factory-provider" 
+							minOccurs="0" maxOccurs="1"/>
+					</xsd:sequence>
+
+				</xsd:extension>
+			</xsd:complexContent>
+		</xsd:complexType>
+	</xsd:element>
+
+		<xsd:complexType name="sharding-strategy">
+			<xsd:complexContent>
+				<xsd:extension base="beans:identifiedType">
+					<xsd:attribute name="shared-strategy-impl" type="xsd:string"  	 />
+				</xsd:extension>
+			</xsd:complexContent>
+		</xsd:complexType>
+
+		<xsd:complexType name="connection-factory-provider">
+			<xsd:complexContent>
+				<xsd:extension base="beans:identifiedType">
+				<xsd:sequence>
+					<xsd:element name="spec-provider" type="spec-provider"
+						 />
+						</xsd:sequence>
+					<xsd:attribute name="name" type="xsd:string" />	
+				</xsd:extension>
+			</xsd:complexContent>
+		</xsd:complexType>
+
+		<xsd:complexType  name="spec-provider">
+			<xsd:complexContent>
+				<xsd:extension base="beans:identifiedType">
+					<xsd:sequence>
+						<xsd:element name="shared-spec" type="shared-spec" 
+							minOccurs="0" maxOccurs="unbounded"/>
+					</xsd:sequence>
+				</xsd:extension>
+
+			</xsd:complexContent>
+		</xsd:complexType>
+
+		<xsd:complexType name="shared-spec">
+			<xsd:complexContent>
+				<xsd:extension base="beans:identifiedType">
+					<xsd:attribute name="host" type="xsd:string" use="required"></xsd:attribute>
+					<xsd:attribute name="password" type="xsd:string" use="required"></xsd:attribute>
+					<xsd:attribute name="port" type="xsd:string" use="required"></xsd:attribute>
+					<xsd:attribute name="db" type="xsd:string" use="required"></xsd:attribute>
+				</xsd:extension>
+			</xsd:complexContent>
+		</xsd:complexType>
+
+	<xsd:element name="people">
+		<xsd:complexType>
+			<xsd:complexContent>
+				<xsd:extension base="beans:identifiedType">
+					<xsd:attribute name="name" type="xsd:string" />
+					<xsd:attribute name="age" type="xsd:int" />
+				</xsd:extension>
+			</xsd:complexContent>
+		</xsd:complexType>
+	</xsd:element>
+</xsd:schema> 
